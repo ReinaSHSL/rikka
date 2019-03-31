@@ -1,10 +1,12 @@
 package reinashsl.rikkamod;
 
 import basemod.ClickableUIElement;
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.TipHelper;
+import com.megacrit.cardcrawl.helpers.input.InputHelper;
 
 import java.util.ArrayList;
 
@@ -25,6 +27,8 @@ public class Rikka extends ClickableUIElement {
             add("I'm calling the cops.");
         }
     };
+    private String s = "Hey!";
+    private float timer = 2;
 
     public Rikka(Texture img) {
         super(img, 0F, 300F, 300F, 300F);
@@ -32,8 +36,13 @@ public class Rikka extends ClickableUIElement {
 
     @Override
     protected void onHover() {
+        timer -= Gdx.graphics.getDeltaTime();
+        if (timer <= 0) {
+            s = harassmentLines.get(AbstractDungeon.miscRng.random(harassmentLines.size() - 1));
+            timer = 2;
+        }
         TipHelper.renderGenericTip(50.0f * Settings.scale, 380.0f * Settings.scale,
-                "Rikka Takarada", "Your trusty Waifu. Gives you encouragement.");
+                "Rikka Takarada:", s);
     }
 
     @Override
@@ -43,13 +52,7 @@ public class Rikka extends ClickableUIElement {
 
     @Override
     protected void onClick() {
-        doNotHarassTheWaifu();
-        System.out.println("test?");
+
     }
 
-    public void doNotHarassTheWaifu() {
-        AbstractDungeon.actionManager.addToBottom(new TalkAction(AbstractDungeon.player,
-                harassmentLines.get(AbstractDungeon.miscRng.random(harassmentLines.size() - 1)),
-                2F, 2F));
-    }
 }
