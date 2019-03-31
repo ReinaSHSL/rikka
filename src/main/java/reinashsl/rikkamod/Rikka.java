@@ -27,8 +27,7 @@ public class Rikka extends ClickableUIElement {
     };
 
     public Rikka(Texture img) {
-        super(img, 0F, 0, 230F, 240F);
-
+        super(img, 0F, 300F, 300F, 300F);
     }
 
     @Override
@@ -45,6 +44,7 @@ public class Rikka extends ClickableUIElement {
     @Override
     protected void onClick() {
         doNotHarassTheWaifu();
+        System.out.println("test?");
     }
 
     public void doNotHarassTheWaifu() {
