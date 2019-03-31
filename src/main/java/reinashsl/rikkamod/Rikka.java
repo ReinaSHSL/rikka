@@ -3,6 +3,7 @@ package reinashsl.rikkamod;
 import basemod.ClickableUIElement;
 import com.badlogic.gdx.graphics.Texture;
 import com.megacrit.cardcrawl.core.Settings;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.TipHelper;
 
 import java.util.ArrayList;
@@ -47,6 +48,8 @@ public class Rikka extends ClickableUIElement {
     }
 
     public void doNotHarassTheWaifu() {
-
+        AbstractDungeon.actionManager.addToBottom(new TalkAction(AbstractDungeon.player,
+                harassmentLines.get(AbstractDungeon.miscRng.random(harassmentLines.size() - 1)),
+                2F, 2F));
     }
 }
