@@ -29,8 +29,8 @@ public class Rikka extends ClickableUIElement {
     };
     private String s = "Hey!";
     private float timer = 2;
-    private static float x = 0;
-    private static float y = 300f;
+    public static float x = 0;
+    public static float y = 300f;
 
     public Rikka(Texture img) {
         super(img, x, y, 300F, 300F);
