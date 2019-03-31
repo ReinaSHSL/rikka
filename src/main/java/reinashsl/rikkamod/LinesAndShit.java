@@ -30,6 +30,8 @@ public class LinesAndShit {
                 AbstractDungeon.effectList.add(new SpeechBubble((Rikka.x + 200F) * Settings.scale, (Rikka.y + 300F) * Settings.scale, "Ganbarimasu!", true));
             } else if (AbstractDungeon.miscRng.random(99) < 50) {
                 AbstractDungeon.effectList.add(new SpeechBubble((Rikka.x + 200F) * Settings.scale, (Rikka.y + 300F) * Settings.scale, "Senpai!", true));
+            } else if (AbstractDungeon.miscRng.random(99) < 60) {
+                AbstractDungeon.effectList.add(new SpeechBubble((Rikka.x + 200F) * Settings.scale, (Rikka.y + 300F) * Settings.scale, "Suki desu...", true));
             }
         }
     }
