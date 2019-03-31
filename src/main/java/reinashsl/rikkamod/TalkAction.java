@@ -42,7 +42,7 @@ public class TalkAction extends AbstractGameAction {
             if (this.player) {// 41
                 AbstractDungeon.effectList.add(new SpeechBubble(AbstractDungeon.player.dialogX, AbstractDungeon.player.dialogY, this.bubbleDuration, this.msg, this.source.isPlayer));// 42
             } else {
-                AbstractDungeon.effectList.add(new SpeechBubble(-1150F + 400F, 0 + 200F, this.bubbleDuration, this.msg, this.source.isPlayer));// 50
+                AbstractDungeon.effectList.add(new SpeechBubble(0F + 400F, 0 + 200F, this.bubbleDuration, this.msg, this.source.isPlayer));// 50
             }
 
             this.used = true;// 58

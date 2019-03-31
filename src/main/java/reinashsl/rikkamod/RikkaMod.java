@@ -1,6 +1,7 @@
 package reinashsl.rikkamod;
 
 import basemod.BaseMod;
+import basemod.interfaces.PostInitializeSubscriber;
 import basemod.interfaces.PreRenderSubscriber;
 import basemod.interfaces.RenderSubscriber;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -11,8 +12,8 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 
 @SpireInitializer
-public class RikkaMod implements RenderSubscriber {
-    public static Rikka rikka = new Rikka();
+public class RikkaMod implements RenderSubscriber, PostInitializeSubscriber {
+    public static Rikka rikka;
 
     @SuppressWarnings("unused")
     public static void initialize() {
@@ -22,9 +23,16 @@ public class RikkaMod implements RenderSubscriber {
 
     @Override
     public void receiveRender(SpriteBatch sb) {
-        if (CardCrawlGame.dungeon != null
-                && AbstractDungeon.getCurrRoom().phase == AbstractRoom.RoomPhase.COMBAT) {
-            rikka.render(sb);
+        if (AbstractDungeon.player != null && CardCrawlGame.dungeon != null && AbstractDungeon.getCurrRoom().phase == AbstractRoom.RoomPhase.COMBAT) {
+            if (!AbstractDungeon.isScreenUp) {
+                rikka.render(sb);
+                rikka.update();
+            }
         }
+    }
+
+    @Override
+    public void receivePostInitialize() {
+        rikka = new Rikka(TextureLoader.getTexture("rikka/rikka.png"));
     }
 }

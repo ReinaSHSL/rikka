@@ -26,8 +26,8 @@ public class Rikka extends ClickableUIElement {
         }
     };
 
-    public Rikka() {
-        super(TextureLoader.getTexture("rikka/rikka.png"), -1150F, 0, 230F, 240F);
+    public Rikka(Texture img) {
+        super(img, 0F, 0, 230F, 240F);
 
     }
 
