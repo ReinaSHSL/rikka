@@ -66,7 +66,7 @@ public class LinesAndShit {
     }
 
     @SpirePatch(
-            clz = AbstractPlayer.class,
+            clz = VelvetChoker.class,
             method = "onPlayCard"
     )
     public static class Choker {
