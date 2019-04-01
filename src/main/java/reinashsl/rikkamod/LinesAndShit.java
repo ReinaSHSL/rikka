@@ -12,6 +12,7 @@ import com.megacrit.cardcrawl.vfx.SpeechBubble;
 
 
 public class LinesAndShit {
+    private static boolean startOfCombat = true;
 
     @SpirePatch(
             clz = AbstractPlayer.class,
@@ -30,16 +31,19 @@ public class LinesAndShit {
     )
     public static class StartTurn {
         public static void Prefix(AbstractPlayer __instance) {
-            if (AbstractDungeon.miscRng.random(99) < 30) {
-                AbstractDungeon.effectList.add(new SpeechBubble((Rikka.x + 200F) * Settings.scale, (Rikka.y + 300F) * Settings.scale,
-                        "Ganbarimasu!", true));
-            } else if (AbstractDungeon.miscRng.random(99) < 50) {
-                AbstractDungeon.effectList.add(new SpeechBubble((Rikka.x + 200F) * Settings.scale, (Rikka.y + 300F) * Settings.scale,
-                        "Senpai!", true));
-            } else if (AbstractDungeon.miscRng.random(99) < 60) {
-                AbstractDungeon.effectList.add(new SpeechBubble((Rikka.x + 200F) * Settings.scale, (Rikka.y + 300F) * Settings.scale,
-                        "Suki desu...", true));
+            if (!startOfCombat) {
+                if (AbstractDungeon.miscRng.random(99) < 30) {
+                    AbstractDungeon.effectList.add(new SpeechBubble((Rikka.x + 200F) * Settings.scale, (Rikka.y + 300F) * Settings.scale,
+                            "Ganbarimasu!", true));
+                } else if (AbstractDungeon.miscRng.random(99) < 50) {
+                    AbstractDungeon.effectList.add(new SpeechBubble((Rikka.x + 200F) * Settings.scale, (Rikka.y + 300F) * Settings.scale,
+                            "Senpai!", true));
+                } else if (AbstractDungeon.miscRng.random(99) < 60) {
+                    AbstractDungeon.effectList.add(new SpeechBubble((Rikka.x + 200F) * Settings.scale, (Rikka.y + 300F) * Settings.scale,
+                            "Suki desu...", true));
+                }
             }
+            startOfCombat = false;
         }
     }
 
@@ -62,6 +66,7 @@ public class LinesAndShit {
         public static void Prefix(AbstractPlayer __instance) {
             AbstractDungeon.effectList.add(new SpeechBubble((Rikka.x + 200F) * Settings.scale, (Rikka.y + 300F) * Settings.scale,
                     "Yoku dekimashita!", true));
+            startOfCombat = true;
         }
     }
 
