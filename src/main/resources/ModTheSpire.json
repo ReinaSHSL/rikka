@@ -1,0 +1,11 @@
+{
+  "modid": "rikka",
+  "name": "Rikka is Your Waifu",
+  "author_list": ["Reina", "keyboard mash guy who made aspiration"],
+  "description": "thicc thighs save lives",
+  "version": "${project.version}",
+  "sts_version": "${SlayTheSpire.version}",
+  "mts_version": "${ModTheSpire.version}",
+  "dependencies": ["basemod"],
+  "update_json": ""
+}
